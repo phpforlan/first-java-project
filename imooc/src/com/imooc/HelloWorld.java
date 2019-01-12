@@ -1,5 +1,10 @@
 package com.imooc;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author lurenzhong@didichuxing.com
  * @version 1.0
@@ -9,21 +14,30 @@ public class HelloWorld {
 
     public static void main(String[] args) {
 
-        System.out.println("hello world! happy");
+        int[] scores = {89, -23, 64, 91, 119, 52, 73};
+
+        HelloWorld hello = new HelloWorld();
+        hello.printScore(scores);
+
     }
 
-
     /**
-     * 查询用户列表
+     * 打印考试成绩前三名
      *
-     * @param page     第几页
-     * @param pageSize 每页大小
-     * @return 返回用户列表
-     * @throws RuntimeException,Exception
+     * @param scores
      */
-    public String queryUserList(int page, int pageSize) {
+    public void printScore(int[] scores) {
+        Arrays.sort(scores);
 
-        return "userList";
+        int num = 1;
+        for (int i = scores.length - 1; i >= 0 && num <= 3; i--) {
+            if (scores[i] < 0 || scores[i] > 100) {
+                continue;
+            }
+            num++;
+            System.out.println(scores[i]);
+        }
+
     }
 
 }
